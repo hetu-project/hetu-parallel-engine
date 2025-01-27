@@ -49,9 +49,9 @@ Optimized network communication
 We welcome contributions! Please read our contributing guidelines before submitting pull requests.
 
 ### License
-This project is licensed under [LICENSE NAME] - see the LICENSE file for details.
+See the LICENSE file for details.
 
 ### Acknowledgments
 CometBFT Team
 Cosmos-SDK Team
-Narwhal Team at Meta (formerly Facebook)
+Narwhal Team at Meta
