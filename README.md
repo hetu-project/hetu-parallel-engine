@@ -1,6 +1,6 @@
 # Hetu Parallel Engine
 
-Hetu Parallel Engine is a high-performance blockchain consensus engine that combines the power of CometBFT (based on Cosmos-SDK) with a customized DAG-based Narwhal consensus implementation.
+Hetu Parallel Engine is a high-performance blockchain consensus engine that combines the power of CometBFT with a customized DAG-based Narwhal consensus implementation.
 
 ## Architecture
 
@@ -42,8 +42,8 @@ Optimized network communication
 ## Getting Started
 
 ### Prerequisites
-Go 1.19 or later
-Rust 1.70 or later
+- Go 1.19 or later
+- Rust 1.70 or later
 
 ## Contributing
 We welcome contributions! Please read our contributing guidelines before submitting pull requests.
