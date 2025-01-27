@@ -1,0 +1,27 @@
+[package]
+name = "cometbft-node"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.42", features = ["full"] }
+cometbft = { git = "https://github.com/cometbft/cometbft-rs", branch = "main" }
+cometbft-proto = { git = "https://github.com/cometbft/cometbft-rs", branch = "main" }
+cometbft-light-client = { git = "https://github.com/cometbft/cometbft-rs", branch = "main" }
+serde_json = "1"
+toml = "0.8"
+serde = { version = "1", features = ["derive"] }
+hex = "0.4.3"
+rocksdb = "0.22"
+rand = "0.8"
+dirs = "5.0.1"
+tempfile = "3.14.0"
+bytes = "1.8.0"
+prost = "0.12"
+async-trait = "0.1.74"
+bincode = "2.0.0-rc.3"
+serde_with = "3.4.0"
+log = "0.4"
+env_logger = "0.10"
+ed25519-consensus = "2.1"
+digest = "0.10.7"

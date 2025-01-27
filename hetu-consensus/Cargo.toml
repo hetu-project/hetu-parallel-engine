@@ -1,0 +1,3 @@
+[workspace]
+members = ["primary", "node", "store", "crypto", "worker", "consensus", "network", "config", "cometbft"]
+resolver = "2"

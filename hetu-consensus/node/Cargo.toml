@@ -1,0 +1,47 @@
+[package]
+name = "node"
+version = "0.1.0"
+authors = ["George Danezis <gdanezis@fb.com>"]
+edition = "2018"
+
+[dependencies]
+tokio = { version = "1.42", features = ["full"] }
+tokio-util = { version = "0.7", features = ["codec"] }
+clap = "2.33.3"
+env_logger = "0.7.1"
+log = "0.4.11"
+bytes = { version = "1.0.1", features = ["serde"] }
+bincode = "1.3.1"
+anyhow = "1.0.40"
+rand = "0.7.3"
+prost = "0.12"
+futures = "0.3.15"
+
+config = { path = "../config" }
+store = { path = "../store" }
+crypto = { path = "../crypto" }
+primary = { path = "../primary" }
+worker = { path = "../worker" }
+consensus = { path = "../consensus" }
+
+alloy = { version = "0.9", features = ["full"] }
+alloy-signer = "0.9"
+alloy-rpc-client = "0.8"
+alloy-primitives = { version = "0.8.18", features = ["rand", "serde", "arbitrary"] }
+alloy-signer-local = { version = "0.9",features = ["mnemonic"] }
+eyre = "0.6.12"
+hex = "0.4.3"
+serde = { version = "1.0", features = ["derive"] }
+rocksdb = "0.22.0"
+serde_json = "1.0.132"
+
+[features]
+benchmark = ["worker/benchmark", "primary/benchmark", "consensus/benchmark"]
+
+[build-dependencies]
+prost-build = "0.12"
+
+[[bin]]         
+name = "benchmark_client"   
+path = "src/benchmark_client.rs" 
+required-features = ["benchmark"] 

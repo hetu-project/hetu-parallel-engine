@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package narwhal;
+
+option go_package = "github.com/cometbft/cometbft/proto/narwhal";
+
+import "gogoproto/gogo.proto";
+
+// Certificate represents a consensus certificate
+message Certificate {
+    Header header = 1 [(gogoproto.nullable) = false];
+    bytes signature = 2;
+}
+
+// Header contains the certificate header information
+message Header {
+    repeated PayloadEntry payload = 1 [(gogoproto.nullable) = false];
+    uint64 round = 2;
+    uint64 epoch = 3;
+    bytes author = 4;
+}
+
+// PayloadEntry represents a single payload entry in the header
+message PayloadEntry {
+    bytes digest = 1;
+    uint32 worker_id = 2;
+}

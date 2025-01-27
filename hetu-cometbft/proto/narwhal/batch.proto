@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package narwhal;
+
+option go_package = "github.com/cometbft/cometbft/proto/narwhal";
+
+// BatchTransactions contains all transactions from a certificate
+message BatchTransactions {
+    repeated bytes transactions = 1;
+    uint64 round = 2;
+}

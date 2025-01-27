@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package batch;
+
+// BatchTransactions contains all transactions from a certificate
+message BatchTransactions {
+    repeated bytes transactions = 1;
+    uint64 round = 2;
+}
