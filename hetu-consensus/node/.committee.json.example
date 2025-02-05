@@ -1,0 +1,60 @@
+{
+  "authorities": {
+    "jD7ZjLbvddCMctVSjrG/ar6FF5FHKWTwhLd1Em57nsc=": {
+      "stake": 1,
+      "primary": {
+        "primary_to_primary": "node0_ip:4000",
+        "worker_to_primary": "127.0.0.1:4001"
+      },
+      "workers": {
+        "0": {
+          "primary_to_worker": "127.0.0.1:4002",
+          "transactions": "node0_ip:4003",
+          "worker_to_worker": "node0_ip:4004"
+        }
+      }
+    },
+    "es4DFNJWBqPoTW2WiRo7q0l21IIoy59D7t2ZP3oqTgQ=": {
+      "stake": 1,
+      "primary": {
+        "primary_to_primary": "node1_ip:4000",
+        "worker_to_primary": "127.0.0.1:4001"
+      },
+      "workers": {
+        "0": {
+          "primary_to_worker": "127.0.0.1:4002",
+          "transactions": "node1_ip:4003",
+          "worker_to_worker": "node1_ip:4004"
+        }
+      }
+    },
+    "duT+22jivVfSLbKYvWPZX89IqbxSA32s7gTD8f4do6Y=": {
+      "stake": 1,
+      "primary": {
+        "primary_to_primary": "node2_ip:4000",
+        "worker_to_primary": "127.0.0.1:4001"
+      },
+      "workers": {
+        "0": {
+          "primary_to_worker": "127.0.0.1:4002",
+          "transactions": "node2_ip:4003",
+          "worker_to_worker": "node2_ip:4004"
+        }
+      }
+    },
+    "0HpfxNfE16zLWX0kv63Qsfh6GRAxxPMlpEoCYYW4EeE=": {
+      "stake": 1,
+      "primary": {
+        "primary_to_primary": "node3_ip:4000",
+        "worker_to_primary": "127.0.0.1:4001"
+      },
+      "workers": {
+        "0": {
+          "primary_to_worker": "127.0.0.1:4002",
+          "transactions": "node3_ip:4003",
+          "worker_to_worker": "node3_ip:4004"
+        }
+      }
+    }
+  }
+}
