@@ -1,4 +1,6 @@
-# hetu-hub-consensus
+# hetu-consensus
+
+This project implements a decentralized mempool for the Hetu chain. It is required to deploy this mempool before starting a Hetu chain node, which is located at https://github.com/hetu-project/hetu.
 
 ## Deployment Guide
 
