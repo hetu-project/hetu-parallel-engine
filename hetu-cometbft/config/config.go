@@ -798,7 +798,7 @@ type MempoolConfig struct {
 func DefaultMempoolConfig() *MempoolConfig {
 	return &MempoolConfig{
 		Type:           MempoolTypeNarwhal,
-		Recheck:        true,
+		Recheck:        false,
 		RecheckTimeout: 1000 * time.Millisecond,
 		Broadcast:      true,
 		WalPath:        "",

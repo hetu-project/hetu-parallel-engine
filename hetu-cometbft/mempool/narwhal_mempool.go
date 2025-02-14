@@ -138,8 +138,25 @@ func (mem *NarwhalMempool) pollNarwhalTxs() {
 		queueSize := len(mem.batchQueue)
 		mem.mtx.Unlock()
 
-		// Only notify if we successfully added the batch
-		mem.proposalMempool.notifyTxsAvailable()
+		// Add transactions to proposal mempool
+		mem.txMapMtx.RLock()
+		addedTxs := false
+		for _, txHash := range batch.Transactions {
+			if tx, exists := mem.txsByHash[string(txHash)]; exists {
+				if err := mem.proposalMempool.CheckTx(tx.tx, nil, TxInfo{}); err != nil {
+					mem.logger.Error("Failed to add transaction to proposal mempool", "err", err)
+				} else {
+					addedTxs = true
+				}
+			}
+		}
+		mem.txMapMtx.RUnlock()
+
+		// Only notify if we successfully added at least one transaction
+		if addedTxs {
+			mem.proposalMempool.notifyTxsAvailable()
+		}
+
 		mem.logger.Debug("Added batch to queue",
 			"num_txs", len(batch.Transactions),
 			"queue_size", queueSize,
@@ -195,32 +212,7 @@ func (mem *NarwhalMempool) ReapMaxBytesMaxGas(maxBytes, maxGas int64) types.Txs 
 	mem.mtx.Lock()
 	defer mem.mtx.Unlock()
 
-	// If we have batches in the queue, use the first one
-	if len(mem.batchQueue) > 0 {
-		batch := mem.batchQueue[0]
-
-		// Build transaction list
-		mem.txMapMtx.RLock()
-		txs := make(types.Txs, len(batch.Transactions))
-		for i, txHash := range batch.Transactions {
-			if memTx, exists := mem.txsByHash[string(txHash)]; exists {
-				txs[i] = memTx.tx
-			} else {
-				// If any transaction is missing, skip this batch
-				mem.logger.Error("Missing transaction while reaping", "tx_hash", string(txHash))
-				mem.txMapMtx.RUnlock()
-				return nil
-			}
-		}
-		mem.txMapMtx.RUnlock()
-
-		// Remove the batch from queue after successful processing
-		mem.batchQueue = mem.batchQueue[1:]
-
-		return txs
-	}
-
-	// Fallback to proposal mempool if no batch is available
+	// Always get transactions from the proposal mempool since we've already added them there
 	return mem.proposalMempool.ReapMaxBytesMaxGas(maxBytes, maxGas)
 }
 
